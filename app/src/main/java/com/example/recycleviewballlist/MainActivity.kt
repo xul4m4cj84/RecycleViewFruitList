@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         initBallList()  //set up the data source
         //val layoutManager = LinearLayoutManager(this)
-        val layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(this, GridLayoutManager.VERTICAL, false)
         binding.recycleView.layoutManager = layoutManager
         val adapter = BallAdapter(ballList)  //customized your own adapter
         binding.recycleView.adapter = adapter
@@ -29,11 +29,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBallList() {
-        repeat(6) {
             ballList.add(Balls("Baseball",R.drawable.baseball))
             ballList.add(Balls("Basketball",R.drawable.basketball))
             ballList.add(Balls("Football",R.drawable.football))
             ballList.add(Balls("Other",R.drawable.other))
-        }
     }
 }

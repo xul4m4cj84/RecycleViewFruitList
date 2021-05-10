@@ -1,5 +1,7 @@
 package com.example.recycleviewballlist
 
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,10 +20,15 @@ class BallAdapter(val ballList: List<Balls>): Adapter<BallAdapter.ViewHolder>() 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         //val view = LayoutInflater.from(parent.context).inflate(R.layout.my_layout, parent, false)
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.my_layout_card, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.my_layout, parent, false)
         val viewHolder = ViewHolder(view)
         viewHolder.itemView.setOnClickListener {
-            Toast.makeText(parent.context, ballList[viewHolder.bindingAdapterPosition].name, Toast.LENGTH_SHORT).show()
+            //Toast.makeText(parent.context, ballList[viewHolder.bindingAdapterPosition].name, Toast.LENGTH_SHORT).show()
+
+            val intent = Intent()
+            intent.putExtra("name", ballList[viewHolder.bindingAdapterPosition].name)
+            intent.setClass(it.context , MainDetail::class.java)
+            it.context.startActivity(intent)
         }
         return viewHolder
     }
